@@ -30,7 +30,8 @@ Enable integration between OTRS and Metabase Dashboard in IFrame mode (agent por
 		"login": null
 		},
 	
-		This means hide login filter and assign login value based on logged customer username
+		*This means hide login filter and assign login value based on logged customer username
+		*Not applicable for agent dashboard  
 	
 4. Makesure perl-JSON-WebToken is installed.
 
