@@ -35,4 +35,7 @@ Enable integration between OTRS and Metabase Dashboard in IFrame mode (agent por
 5. Makesure perl-JSON-WebToken is installed.
 
 
+[![MB1.png](https://i.postimg.cc/446dgX9m/MB1.png)](https://postimg.cc/Btvs59N0)
+
+
 
