@@ -5,13 +5,13 @@ Enable integration between OTRS and Metabase Dashboard in IFrame mode (agent por
 
 2. Enable Metabase dashboard 'Sharing and Embedding' > 'Embed this dashboard in application'  
 
-3. At right side, choose which filter will be show 
+	a) At right side, choose which filter will be show 
 		
 		- locked = value cant be change by dashboard user (for example, username. we will get this from OTRS param $Self->{UserLogin} )  
 		- editable = value can be change (for example, year, group)
 		
 	
-4. Copy and paste FROM Metabase Sharing/Embedded Code to OTRS XML (Rebuild and Sync afterwards)  
+3. Copy and paste FROM Metabase Sharing/Embedded Code to Admin > System Configuration > DashboardBackend###0402-Metabase1  
 
 	a) MetabaseURL, 
 	b) SecretKey,
@@ -32,7 +32,7 @@ Enable integration between OTRS and Metabase Dashboard in IFrame mode (agent por
 	
 		This means hide login filter and assign login value based on logged customer username
 	
-5. Makesure perl-JSON-WebToken is installed.
+4. Makesure perl-JSON-WebToken is installed.
 
 
 [![MB1.png](https://i.postimg.cc/446dgX9m/MB1.png)](https://postimg.cc/Btvs59N0)
