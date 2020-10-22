@@ -13,11 +13,11 @@ Enable integration between OTRS and Metabase Dashboard in IFrame mode (agent por
 	
 3. Copy and paste FROM Metabase Sharing/Embedded Code to Admin > System Configuration > DashboardBackend###0402-Metabase1  
 
-	a) MetabaseURL, 
-	b) SecretKey,
-	c) DashboardID = 1 
+	a) MetabaseURL,  
+	b) SecretKey,  
+	c) DashboardID = 1   
 	
-	if metabase embed code,
+	if metabase embed code, 
 
 		resource: { dashboard: 1 }
 	
