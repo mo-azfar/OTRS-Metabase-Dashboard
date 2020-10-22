@@ -3,6 +3,8 @@
 - Metabase: https://www.metabase.com/  
 - Embedding Metabase : https://www.metabase.com/docs/latest/administration-guide/13-embedding.html  
 
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/MohdAzfar?locale.x=en_US)  
+
 1. Create a Metabase dashboard with question, filter, etc  
 
 2. Enable Metabase dashboard 'Sharing and Embedding' > 'Embed this dashboard in application'  
