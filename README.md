@@ -1,5 +1,7 @@
 # OTRS-Metabase-Dashboard
-Enable integration between OTRS and Metabase Dashboard in IFrame mode (agent portal)  
+- Enable integration between OTRS and Metabase Dashboard in IFrame mode (agent portal)    
+- Metabase: https://www.metabase.com/  
+- Embedding Metabase : https://www.metabase.com/docs/latest/administration-guide/13-embedding.html  
 
 1. Create a Metabase dashboard with question, filter, etc  
 
@@ -30,8 +32,9 @@ Enable integration between OTRS and Metabase Dashboard in IFrame mode (agent por
 		"login": null
 		},
 	
-		*This means hide login filter and assign login value based on logged customer username
-		*Not applicable for agent dashboard  
+		*This means hide login filter and assign login value based on logged customer username (only if your SQL has this input filter)  
+		*Not applicable for agent dashboard
+		*Leave it empty if not applicable  
 	
 4. Makesure perl-JSON-WebToken is installed.
 
