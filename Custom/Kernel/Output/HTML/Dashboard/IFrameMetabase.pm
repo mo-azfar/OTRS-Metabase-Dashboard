@@ -57,10 +57,18 @@ sub Run {
 	my $DashboardID = int($Self->{Config}->{'DashboardID'});
 
 	my $HideParam = $Self->{Config}->{'HideParam'};
-	my ($ParamKey, $ParamValue) = split /=/, $HideParam;
-	$ParamValue = $Self->{$ParamValue};
-	#$Self->{UserFullname}
-	#$Self->{UserLogin}
+	
+	#to support multiple parameter send to metabase. Separator ; 
+	my @TotalParam;
+	my @SplitParam = split /;/, $HideParam;
+	foreach my $NewParam ( @SplitParam )
+	{
+		my ($ParamKey, $ParamValue) = split /=/, $NewParam;
+		$ParamValue = $Self->{$ParamValue};
+		#$Self->{UserFullname}
+		#$Self->{UserLogin}
+		push @TotalParam, $ParamKey => $ParamValue; 
+	}
 	
 	my $MinutesExpired = int($Self->{Config}->{'MinutesExpired'});
 	my $DateTimeObject = $Kernel::OM->Create('Kernel::System::DateTime');
@@ -68,7 +76,7 @@ sub Run {
 
 	my $jwt = JSON::WebToken->encode({
 		resource => {'dashboard' => $DashboardID },
-		params => { $ParamKey => $ParamValue },
+		params => { @TotalParam },
 		exp => $Epoch + (60 * $MinutesExpired) ,
 		$MetabaseURL => JSON::true,
 	}, $SecretKey);
