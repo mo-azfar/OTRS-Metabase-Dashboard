@@ -67,6 +67,8 @@ sub Run {
 		push @TotalParam, $ParamKey => $ParamValue; 
 	}
 	
+	my $Metabase = $Kernel::OM->Get('Kernel::System::Metabase');
+	
 	my $URL = $Metabase->GenerateTokenURL(
 		MetabaseURL => $Self->{Config}->{'MetabaseURL'},
 		SecretKey    => $Self->{Config}->{'SecretKey'},
