@@ -4,6 +4,7 @@
 # --
 #for metabase dashboard
 #28112020 - add support for hiding multiple metabase filter
+#06122020 - registered metabase jwt as system api and use it instead.
 
 package Kernel::Output::HTML::Dashboard::IFrameMetabase;
 
@@ -53,16 +54,10 @@ sub Run {
     # quote Title attribute, it will be used as name="" parameter of the iframe
     my $Title = $Self->{Config}->{Title} || '';
     $Title =~ s/\s/_/smx;
-	
-	my $MetabaseURL = $Self->{Config}->{'MetabaseURL'};
-	my $SecretKey = $Self->{Config}->{'SecretKey'};
-	my $DashboardID = int($Self->{Config}->{'DashboardID'});
-
-	my $HideParam = $Self->{Config}->{'HideParam'};
-	
+		
 	#to support multiple parameter send to metabase. Separator ; 
 	my @TotalParam;
-	my @SplitParam = split /;/, $HideParam;
+	my @SplitParam = split /;/, $Self->{Config}->{'HideParam'};
 	foreach my $NewParam ( @SplitParam )
 	{
 		my ($ParamKey, $ParamValue) = split /=/, $NewParam;
@@ -72,19 +67,15 @@ sub Run {
 		push @TotalParam, $ParamKey => $ParamValue; 
 	}
 	
-	my $MinutesExpired = int($Self->{Config}->{'MinutesExpired'});
-	my $DateTimeObject = $Kernel::OM->Create('Kernel::System::DateTime');
-	my $Epoch = $DateTimeObject->ToEpoch();
-
-	my $jwt = JSON::WebToken->encode({
-		resource => {'dashboard' => $DashboardID },
-		params => { @TotalParam },
-		exp => $Epoch + (60 * $MinutesExpired) ,
-		$MetabaseURL => JSON::true,
-	}, $SecretKey);
+	my $URL = $Metabase->GenerateTokenURL(
+		MetabaseURL => $Self->{Config}->{'MetabaseURL'},
+		SecretKey    => $Self->{Config}->{'SecretKey'},
+		DashboardID  => int($Self->{Config}->{'DashboardID'}),
+		MinutesExpired  => int($Self->{Config}->{'MinutesExpired'}),
+		HideParam      => \@TotalParam,
+	);
 	
-	my $NewURL = $MetabaseURL."/embed/dashboard/".$jwt."#theme=night&bordered=true&titled=true";	
-	$Self->{Config}->{'URL'} = $NewURL;
+	$Self->{Config}->{'URL'} = $URL;
 
     my $Content = $Kernel::OM->Get('Kernel::Output::HTML::Layout')->Output(
         TemplateFile => 'AgentDashboardIFrame',
