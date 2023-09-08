@@ -41,6 +41,6 @@
 4. Makesure perl-JSON-WebToken is installed.
 
 
-![metabase_agent](metabase_agent)
+![metabase_agent](metabase_agent.png)
 
 
