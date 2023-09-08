@@ -1,7 +1,10 @@
+# --
+# Copyright (C) 2023 mo-azfar, https://github.com/mo-azfar
+# --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
-# --API FOR GENERATE METABASE DASHBOARD WEB TOKEN
+# --
 package Kernel::System::Metabase;
 
 use strict;
@@ -26,11 +29,11 @@ sub new {
 =cut
 		
 		my $URL = $Self->GenerateTokenURL(
-                MetabaseURL => $ConfigObjectDashboard->{'MetabaseURL'},
-				SecretKey    => $ConfigObjectDashboard->{'SecretKey'},
-				DashboardID  => int($ConfigObjectDashboard->{'DashboardID'}),
-				MinutesExpired      => $ConfigObjectDashboard->{'MinutesExpired'},
-				HideParam      => \@TotalParam,
+            MetabaseURL => $ConfigObjectDashboard->{'MetabaseURL'},
+            SecretKey    => $ConfigObjectDashboard->{'SecretKey'},
+            DashboardID  => int($ConfigObjectDashboard->{'DashboardID'}),
+            MinutesExpired      => $ConfigObjectDashboard->{'MinutesExpired'},
+            HideParam      => \@TotalParam,
 		);
 
 =cut
@@ -59,10 +62,9 @@ sub GenerateTokenURL {
 		$Param{MetabaseURL} => JSON::true,
 	}, $Param{SecretKey});
 	
-	my $NewURL = $Param{MetabaseURL}."/embed/dashboard/".$jwt."#theme=night&bordered=true&titled=true";
+	my $NewURL = $Param{MetabaseURL}."/embed/dashboard/".$jwt."#theme=transparent&bordered=true&titled=false";
 
 	return $NewURL;
 }
 
 1;
-

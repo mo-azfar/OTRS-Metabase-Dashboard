@@ -1,7 +1,7 @@
 # OTRS-Metabase-Dashboard
 - Enable integration between OTRS and Metabase Dashboard in IFrame mode (agent portal)    
 - Metabase: https://www.metabase.com/  
-- Embedding Metabase : https://www.metabase.com/docs/latest/administration-guide/13-embedding.html  
+- Embedding Metabase : https://www.metabase.com/docs/latest/embedding/introduction
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/MohdAzfar?locale.x=en_US)  
 
@@ -41,5 +41,6 @@
 4. Makesure perl-JSON-WebToken is installed.
 
 
-[![MB1.png](https://i.postimg.cc/446dgX9m/MB1.png)](https://postimg.cc/Btvs59N0)
+![metabase_agent](metabase_agent)
+
 
